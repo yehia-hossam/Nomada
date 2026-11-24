@@ -4,9 +4,9 @@ A travel and stays website template built with **Next.js 14 (App Router)**, **Re
 
 All site content is centralized in a single configuration file, and visual scenes use SVG artwork out of the box with support for custom photography.
 
-[Live Demo](https://your-demo-url.com)
+[Live Demo](https://nomada-plum.vercel.app/)
 
-![Nomada preview](./public/images/screenshot.png)
+![Nomada preview](https://github.com/yehia-hossam/Nomada/blob/main/Screen%20Shot%20.png)
 
 ## Quick Start
 
