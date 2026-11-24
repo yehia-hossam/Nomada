@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   THEME TOKENS - edit these to re-colour the entire template.
+   Values are "R G B" so Tailwind can add opacity (bg-accent/20).
+------------------------------------------------------------------- */
+:root {
+  --bg: 11 26 38;
+  /* deep navy */
+  --fg: 240 244 248;
+  /* off-white */
+  --muted: 148 163 184;
+  /* slate */
+  --card: 18 38 54;
+  /* navy card */
+  --line: 240 244 248;
+  --accent: 255 138 76;
+  /* coral/orange */
+  --accent-ink: 11 26 38;
+  --hot: 255 99 132;
+  /* pink */
+}
+
+[data-theme="light"] {
+  --bg: 245 247 250;
+  --fg: 11 26 38;
+  --muted: 100 116 139;
+  --card: 255 255 255;
+  --line: 11 26 38;
+  --accent: 234 88 12;
+  --accent-ink: 255 255 255;
+  --hot: 219 39 119;
+}
+
+/* ------------------------------------------------------------------
+   BASE
+------------------------------------------------------------------- */
+html {
+  background: rgb(var(--bg));
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color .5s, color .5s;
+}
+
+::selection {
+  background: rgb(var(--accent));
+  color: rgb(var(--accent-ink));
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Optional film-grain overlay (disable in src/config/site.ts -> features.grain) */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: .07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Reusable layout wrapper */
+.wrap {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1440px;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* Section titles */
+.h-display {
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: .95;
+}
+
+.h-serif {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+/* Custom cursor is hidden on touch devices */
+@media (hover: none),
+(pointer: coarse) {
+  .cursor {
+    display: none !important;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+  html.has-cursor,
+  html.has-cursor a,
+  html.has-cursor button {
+    cursor: none;
+  }
+}
+
+/* Hide scrollbar on horizontal mobile scrollers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
